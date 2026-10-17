@@ -1,0 +1,22 @@
+---
+import SectionHeading from "../components/SectionHeading.astro";
+import { audience } from "../content/landing";
+---
+
+<section class="border-t border-ink/8">
+  <div
+    class="mx-auto grid max-w-1200 gap-28 px-20 py-80 lg:grid-cols-[repeat(auto-fit,minmax(min(100%,380px),1fr))] lg:gap-x-64 lg:gap-y-48 lg:px-32 lg:py-120"
+  >
+    <SectionHeading eyebrow={audience.eyebrow} title={audience.title} />
+    <ul class="m-0 flex list-none flex-col p-0">
+      {
+        audience.items.map((item) => (
+          <li class="flex gap-14 border-t border-ink/10 py-18 last:border-b lg:gap-16 lg:py-22">
+            <span aria-hidden="true" class="text-16 text-accent lg:text-18">↗</span>
+            <span class="text-16 leading-[1.45] text-pretty text-ink-soft lg:text-18">{item}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

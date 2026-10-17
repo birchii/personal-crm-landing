@@ -1,0 +1,29 @@
+---
+import CtaButton from "../components/CtaButton.astro";
+import Diamond from "../components/Diamond.astro";
+import DotGrid from "../components/DotGrid.astro";
+import { finalCta } from "../content/landing";
+---
+
+<section class="relative overflow-hidden lg:border-t lg:border-ink/8">
+  <DotGrid variant="final" />
+  <Diamond
+    side="left"
+    class="top-90 -left-250 size-300 rounded-70 shadow-diamond-l lg:top-40 lg:left-[calc(50%-900px)] lg:size-460 lg:rounded-110 lg:shadow-diamond-l-lg"
+  />
+  <Diamond
+    side="right"
+    class="top-90 -right-250 size-300 rounded-70 shadow-diamond-r lg:top-40 lg:right-[calc(50%-900px)] lg:size-460 lg:rounded-110 lg:shadow-diamond-r-lg"
+  />
+  <div
+    class="relative mx-auto flex max-w-1200 flex-col items-center gap-22 px-20 pt-120 pb-110 text-center lg:gap-26 lg:px-32 lg:py-160"
+  >
+    <h2
+      class="m-0 text-40 leading-[1.05] font-medium tracking-heading lg:max-w-700 lg:text-64 lg:leading-[1.03] lg:tracking-display"
+    >
+      {finalCta.title}
+    </h2>
+    <p class="m-0 max-w-300 text-16 leading-[1.5] text-muted lg:max-w-500 lg:text-19">{finalCta.text}</p>
+    <CtaButton variant="final" />
+  </div>
+</section>

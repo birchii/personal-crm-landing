@@ -1,0 +1,47 @@
+---
+import SectionHeading from "../components/SectionHeading.astro";
+import { steps } from "../content/landing";
+
+const lastIndex = steps.items.length - 1;
+---
+
+<section class="border-t border-ink/8">
+  <div class="mx-auto flex max-w-1200 flex-col gap-32 px-20 py-80 lg:gap-56 lg:px-32 lg:py-120">
+    <SectionHeading eyebrow={steps.eyebrow} title={steps.title} titleClass="lg:max-w-720" />
+    <ol
+      class="m-0 flex list-none flex-col p-0 lg:grid lg:grid-cols-[repeat(auto-fit,minmax(min(100%,280px),1fr))] lg:gap-32"
+    >
+      {
+        steps.items.map((step, index) => {
+          const isLast = index === lastIndex;
+          return (
+            <li class="flex gap-18 lg:flex-col lg:gap-20">
+              <div class="flex flex-col items-center lg:flex-row lg:gap-16">
+                <span
+                  class:list={[
+                    "flex size-44 flex-none items-center justify-center rounded-14 text-16 font-semibold lg:size-52 lg:rounded-16 lg:text-18",
+                    isLast
+                      ? "bg-ink text-btn-ink shadow-step-active lg:shadow-step-active-lg"
+                      : "box-content border-[1.5px] border-lavender/80 shadow-step lg:shadow-step-lg",
+                  ]}
+                >
+                  {index + 1}
+                </span>
+                {!isLast && (
+                  <span
+                    aria-hidden="true"
+                    class="w-1 flex-1 bg-(image:--step-line-v) lg:h-1 lg:w-auto lg:bg-(image:--step-line-h)"
+                  />
+                )}
+              </div>
+              <div class:list={["flex flex-col gap-6 pt-10 lg:contents", isLast ? "pb-0" : "pb-32"]}>
+                <span class="text-20 font-medium lg:text-24">{step.title}</span>
+                <span class:list={["text-15 leading-[1.45] text-muted lg:text-17 lg:leading-[1.5]", isLast && "text-pretty"]}>{step.text}</span>
+              </div>
+            </li>
+          );
+        })
+      }
+    </ol>
+  </div>
+</section>

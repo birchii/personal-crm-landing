@@ -1,0 +1,30 @@
+---
+import SectionHeading from "../components/SectionHeading.astro";
+import { faq } from "../content/landing";
+---
+
+<section class="border-t border-ink/8">
+  <div
+    class="mx-auto grid max-w-1200 gap-28 px-20 py-80 lg:grid-cols-[repeat(auto-fit,minmax(min(100%,380px),1fr))] lg:items-start lg:gap-x-64 lg:gap-y-48 lg:px-32 lg:py-120"
+  >
+    <SectionHeading eyebrow={faq.eyebrow} title={faq.title} />
+    <div class="flex flex-col gap-8 lg:gap-10">
+      {
+        faq.items.map((item, index) => (
+          <details open={index === 0} class="rounded-16 border border-ink/9 bg-ink/4 lg:rounded-18">
+            <summary class="flex cursor-pointer items-center justify-between gap-12 rounded-16 p-18 text-16 font-medium lg:gap-16 lg:rounded-18 lg:px-24 lg:py-22 lg:text-18">
+              {item.question}
+              <span
+                aria-hidden="true"
+                class="faq-plus box-content flex size-28 flex-none items-center justify-center rounded-full border border-lilac/50 text-18 text-accent lg:size-32 lg:text-20"
+              >
+                +
+              </span>
+            </summary>
+            <p class="m-0 px-18 pb-18 text-15 leading-[1.5] text-muted lg:px-24 lg:pb-22 lg:text-17">{item.answer}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

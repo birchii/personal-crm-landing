@@ -1,0 +1,15 @@
+---
+interface Props {
+  side: "left" | "right";
+  soft?: boolean;
+  class?: string;
+}
+
+const { side, soft = false, class: className } = Astro.props;
+---
+
+<div
+  aria-hidden="true"
+  class:list={["diamond", soft ? "diamond--soft" : `diamond--${side}`, className]}
+>
+</div>

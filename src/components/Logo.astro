@@ -1,0 +1,28 @@
+---
+import { brand } from "../content/landing";
+
+interface Props {
+  size?: "header" | "footer";
+}
+
+const { size = "header" } = Astro.props;
+const isHeader = size === "header";
+---
+
+<div
+  class:list={[
+    "flex items-center font-semibold",
+    isHeader ? "gap-8 text-17 lg:gap-10 lg:text-19" : "gap-8 text-15 lg:gap-10 lg:text-16",
+  ]}
+>
+  <span
+    aria-hidden="true"
+    class:list={[
+      "block box-content border-[1.5px] border-accent",
+      isHeader
+        ? "size-22 rounded-7 shadow-logo lg:size-24 lg:rounded-8"
+        : "size-18 rounded-6 shadow-logo-sm lg:size-20",
+    ]}
+  ></span>
+  {brand}
+</div>

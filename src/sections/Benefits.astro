@@ -1,0 +1,28 @@
+---
+import DotGrid from "../components/DotGrid.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { benefits } from "../content/landing";
+---
+
+<section class="relative border-t border-ink/8">
+  <DotGrid variant="benefits" />
+  <div class="relative mx-auto flex max-w-1200 flex-col gap-32 px-20 py-80 lg:gap-56 lg:px-32 lg:py-120">
+    <SectionHeading eyebrow={benefits.eyebrow} title={benefits.title} center />
+    <div class="grid grid-cols-2 gap-10 lg:grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] lg:gap-14">
+      <div
+        class="col-span-full flex flex-col gap-8 rounded-20 border border-lilac/35 bg-glow/10 p-20 lg:flex-row lg:flex-wrap lg:items-baseline lg:justify-between lg:gap-24 lg:rounded-24 lg:p-32"
+      >
+        <span class="text-20 font-medium lg:text-32 lg:tracking-snug">{benefits.main.title}</span>
+        <span class="text-15 leading-[1.45] text-highlight-ink lg:max-w-520 lg:text-19">{benefits.main.text}</span>
+      </div>
+      {
+        benefits.items.map((item) => (
+          <div class="flex flex-col gap-8 rounded-20 border border-ink/9 bg-ink/4 p-18 lg:gap-10 lg:rounded-22 lg:p-26">
+            <span class="text-17 font-medium lg:text-20">{item.title}</span>
+            <span class="text-14 leading-[1.45] text-muted-2 lg:text-16 lg:leading-[1.5]">{item.text}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

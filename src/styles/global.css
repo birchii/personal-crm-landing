@@ -1,0 +1,119 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+@layer base {
+  html {
+    /* Mockups use the browser default line height, not Tailwind's 1.5 */
+    line-height: normal;
+    background: var(--color-bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a:hover {
+    opacity: 0.9;
+  }
+
+  a:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 3px;
+  }
+
+  summary {
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@layer components {
+  /* Dotted background, faded out with a radial mask */
+  .dot-grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(var(--dot-color) 1px, transparent 1.2px);
+    background-size: var(--dot-size) var(--dot-size);
+    -webkit-mask-image: var(--dot-mask);
+    mask-image: var(--dot-mask);
+  }
+
+  .dot-grid--hero {
+    --dot-mask: radial-gradient(ellipse 60% 55% at 50% 40%, #000 30%, transparent 80%);
+  }
+
+  .dot-grid--benefits {
+    --dot-color: var(--dot-color-soft);
+    --dot-mask: radial-gradient(ellipse 70% 30% at 50% 12%, #000 20%, transparent 80%);
+  }
+
+  .dot-grid--final {
+    --dot-mask: radial-gradient(ellipse 60% 50% at 50% 50%, #000 30%, transparent 80%);
+  }
+
+  @media (width >= 1024px) {
+    .dot-grid {
+      background-size: var(--dot-size-lg) var(--dot-size-lg);
+    }
+
+    .dot-grid--hero {
+      --dot-mask: radial-gradient(ellipse 50% 50% at 50% 40%, #000 30%, transparent 80%);
+    }
+
+    .dot-grid--benefits {
+      --dot-mask: radial-gradient(ellipse 50% 30% at 50% 15%, #000 20%, transparent 80%);
+    }
+
+    .dot-grid--final {
+      --dot-mask: radial-gradient(ellipse 45% 55% at 50% 50%, #000 30%, transparent 80%);
+    }
+  }
+
+  /* Glowing rotated squares peeking from the screen edges */
+  .diamond {
+    position: absolute;
+    pointer-events: none;
+    transform: rotate(45deg);
+    box-sizing: content-box;
+    border: 1.5px solid var(--diamond-border);
+  }
+
+  .diamond--left {
+    background: var(--diamond-fill-left);
+  }
+
+  .diamond--right {
+    background: var(--diamond-fill-right);
+  }
+
+  .diamond--soft {
+    border-color: var(--diamond-border-soft);
+    background: var(--diamond-fill-soft);
+  }
+
+  .faq-plus {
+    transition: transform 0.2s;
+  }
+
+  details[open] .faq-plus {
+    transform: rotate(45deg);
+  }
+}

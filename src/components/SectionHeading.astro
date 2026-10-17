@@ -1,0 +1,30 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  center?: boolean;
+  class?: string;
+  titleClass?: string;
+}
+
+const { eyebrow, title, center = false, class: className, titleClass } = Astro.props;
+---
+
+<div
+  class:list={[
+    "relative flex flex-col gap-14 lg:gap-16",
+    center ? "items-center text-center" : "items-start",
+    className,
+  ]}
+>
+  <span class="text-12 tracking-eyebrow text-accent-label uppercase lg:text-13">{eyebrow}</span>
+  <h2
+    class:list={[
+      "m-0 text-36 leading-[1.08] font-medium tracking-heading lg:text-56 lg:leading-[1.05]",
+      titleClass,
+    ]}
+  >
+    {title}
+  </h2>
+  <slot />
+</div>

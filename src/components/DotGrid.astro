@@ -1,0 +1,9 @@
+---
+interface Props {
+  variant: "hero" | "benefits" | "final";
+}
+
+const { variant } = Astro.props;
+---
+
+<div aria-hidden="true" class:list={["dot-grid", `dot-grid--${variant}`]}></div>

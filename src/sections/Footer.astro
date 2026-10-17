@@ -1,0 +1,13 @@
+---
+import Logo from "../components/Logo.astro";
+import { footer } from "../content/landing";
+---
+
+<footer class="border-t border-ink/8">
+  <div
+    class="mx-auto flex max-w-1200 flex-col gap-10 px-20 pt-28 pb-36 lg:flex-row lg:flex-wrap lg:items-center lg:justify-between lg:gap-16 lg:p-32"
+  >
+    <Logo size="footer" />
+    <p class="m-0 text-14 leading-[1.45] text-subtle lg:text-15 lg:leading-normal">{footer.text}</p>
+  </div>
+</footer>

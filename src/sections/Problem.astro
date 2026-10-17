@@ -1,0 +1,23 @@
+---
+import SectionHeading from "../components/SectionHeading.astro";
+import { problem } from "../content/landing";
+---
+
+<section class="border-t border-ink/8">
+  <div class="mx-auto flex max-w-1200 flex-col gap-28 px-20 pt-88 pb-72 lg:gap-48 lg:px-32 lg:py-120">
+    <SectionHeading eyebrow={problem.eyebrow} title={problem.title} />
+    <div class="grid gap-10 lg:grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] lg:gap-14">
+      {
+        problem.items.map((item, index) => (
+          <div class="flex gap-14 rounded-18 border border-ink/9 bg-ink/4 p-18 lg:flex-col lg:gap-28 lg:rounded-20 lg:p-26">
+            <span class="pt-2 text-13 text-subtle lg:pt-0 lg:text-14">{String(index + 1).padStart(2, "0")}</span>
+            <p class="m-0 text-16 leading-[1.45] text-ink-soft lg:text-18">{item}</p>
+          </div>
+        ))
+      }
+    </div>
+    <p class="m-0 mt-8 text-22 leading-[1.3] font-medium tracking-tight lg:mt-0 lg:max-w-820 lg:text-32 lg:leading-[1.25] lg:tracking-snug">
+      {problem.conclusion} <span class="text-subtle">{problem.conclusionMuted}</span>
+    </p>
+  </div>
+</section>

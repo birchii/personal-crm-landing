@@ -1,0 +1,46 @@
+---
+import Diamond from "../components/Diamond.astro";
+import { solution } from "../content/landing";
+---
+
+<section class="relative overflow-hidden">
+  <Diamond
+    side="right"
+    soft
+    class="top-40 -right-230 size-300 rounded-70 shadow-diamond-soft lg:top-60 lg:right-[calc(50%-1020px)] lg:size-480 lg:rounded-110 lg:shadow-diamond-soft-lg"
+  />
+  <div
+    class="relative mx-auto grid max-w-1200 gap-32 px-20 pt-88 pb-80 lg:grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] lg:items-center lg:gap-64 lg:px-32 lg:py-120"
+  >
+    <div class="flex flex-col items-start gap-14 lg:gap-18">
+      <span class="text-12 tracking-eyebrow text-accent-label uppercase lg:text-13">{solution.eyebrow}</span>
+      <h2 class="m-0 text-36 leading-[1.08] font-medium tracking-heading lg:text-56 lg:leading-[1.05]">
+        {solution.title}
+      </h2>
+      <p class="m-0 text-16 leading-[1.5] text-muted lg:text-19">{solution.text}</p>
+    </div>
+
+    <div
+      class="flex flex-col gap-6 rounded-24 border border-lilac/30 bg-(image:--card-gradient) p-20 shadow-card lg:gap-0 lg:rounded-28 lg:p-28 lg:shadow-card-lg"
+    >
+      <div class="pb-8 text-12 tracking-eyebrow text-subtle uppercase lg:pb-12 lg:text-13">
+        {solution.cardTitle}
+      </div>
+      {
+        solution.cardItems.map((item, index) => (
+          <div class="flex items-center gap-14 border-t border-ink/8 py-14 lg:gap-16 lg:py-18">
+            <span class="size-8 flex-none rounded-full bg-accent shadow-dot" />
+            <span
+              class:list={[
+                "text-16 lg:text-18",
+                index === solution.cardItems.length - 1 && "leading-[1.4]",
+              ]}
+            >
+              {item}
+            </span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,69 @@
+---
+import CtaButton from "../components/CtaButton.astro";
+import Diamond from "../components/Diamond.astro";
+import DotGrid from "../components/DotGrid.astro";
+import Logo from "../components/Logo.astro";
+import { APP_URL, header, hero } from "../content/landing";
+---
+
+<section class="relative flex min-h-844 flex-col overflow-hidden lg:min-h-900">
+  <DotGrid variant="hero" />
+  <Diamond
+    side="left"
+    class="top-210 -left-250 size-300 rounded-70 shadow-diamond-l lg:top-180 lg:left-[calc(50%-980px)] lg:size-520 lg:rounded-120 lg:shadow-diamond-l-lg"
+  />
+  <Diamond
+    side="right"
+    class="top-210 -right-250 size-300 rounded-70 shadow-diamond-r lg:top-180 lg:right-[calc(50%-980px)] lg:size-520 lg:rounded-120 lg:shadow-diamond-r-lg"
+  />
+
+  <div class="relative mx-auto flex w-full max-w-1200 flex-1 flex-col px-20 pt-20 lg:px-32 lg:pt-24">
+    <header class="flex h-44 items-center justify-between lg:h-56">
+      <Logo />
+      <a
+        href={APP_URL}
+        class="rounded-12 border border-ink/12 bg-ink/7 px-16 py-10 text-14 font-medium lg:px-20 lg:py-12 lg:text-15"
+      >
+        <span class="lg:hidden">{header.ctaShort}</span>
+        <span class="hidden lg:inline">{header.ctaLong}</span>
+      </a>
+    </header>
+
+    <div class="mt-92 flex flex-col items-center gap-22 text-center lg:mt-110 lg:gap-26">
+      <div
+        class="flex items-center gap-8 rounded-full border border-lilac/50 py-6 pr-14 pl-6 text-13 text-pill-ink shadow-pill lg:pr-16 lg:text-14"
+      >
+        <span class="rounded-full bg-ink/10 px-10 py-4 text-ink lg:px-12">{hero.badge}</span>
+        {hero.badgeText}
+      </div>
+      <h1
+        class="m-0 text-42 leading-[1.05] font-medium tracking-heading lg:max-w-820 lg:text-76 lg:leading-[1.02] lg:tracking-display"
+      >
+        {hero.title}
+      </h1>
+      <p class="m-0 text-16 leading-[1.45] text-muted lg:max-w-560 lg:text-19 lg:leading-[1.5]">
+        {hero.lead}
+      </p>
+      <CtaButton />
+    </div>
+
+    <div
+      class="mt-auto -mx-4 flex flex-col gap-12 rounded-t-20 border border-b-0 border-ink/10 bg-ink/5 p-16 lg:mx-auto lg:w-full lg:max-w-640 lg:flex-row lg:flex-wrap lg:items-center lg:justify-between lg:gap-16 lg:rounded-t-24 lg:px-22 lg:py-20"
+    >
+      <div class="flex items-center gap-12 lg:gap-14">
+        <span
+          class="flex size-40 items-center justify-center rounded-full bg-avatar text-14 font-semibold text-avatar-ink lg:size-46 lg:text-15"
+        >
+          {hero.example.initials}
+        </span>
+        <div class="flex flex-col gap-2 lg:gap-3">
+          <span class="text-15 font-semibold lg:text-16">{hero.example.name}</span>
+          <span class="text-13 text-subtle lg:text-14">{hero.example.context}</span>
+        </div>
+      </div>
+      <div class="rounded-12 bg-glow/10 px-12 py-10 text-13 text-muted lg:px-14 lg:py-11 lg:text-14">
+        {hero.example.note}
+      </div>
+    </div>
+  </div>
+</section>
